@@ -1,5 +1,5 @@
 const zod = require('zod')
-const schema = require('../middlewares/signupMiddleware')
+const schema = require('../schemas')
 
 
 function signupValidMiddleware(req, res, next) {
