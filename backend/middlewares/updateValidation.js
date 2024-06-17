@@ -1,6 +1,7 @@
 const { passwordSchema, nameSchema } = require("../schemas");
 
 function validateUpdDataMiddleware(req, res, next){
+    // console.log(req)
     const {password, firstName, lastName} = req.body
     if((password && !passwordSchema.safeParse(password).success)
     || (firstName && !nameSchema.safeParse(firstName).success)
