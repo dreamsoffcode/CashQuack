@@ -9,21 +9,29 @@ const signinAuthMiddleware = require('../middlewares/signinAuth')
 const authMiddleware = require('../middlewares/tokenAuth')
 const validateUpdDataMiddleware = require('../middlewares/updateValidation')
 const router = express.Router()
+const mongoose = require('mongoose')
 
 router.post('/signup', signupValidMiddleware, signupAuthMiddleware, async (req, res) => {
 
     const { username, password, firstName, lastName } = req.body;
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    
     try {
-        const newUser = await User.create({
+        const newUser = await User.create([{
             username, password, firstName, lastName
-        })
+        }], {session})
 
-        const account = await Account.create({
-            userId: newUser._id,
-            balance: ceil(Math.random()*10000)
-        })
+    console.log(newUser)
 
-        const token = jwt.sign({ userId: newUser._id }, JWT_SECRET)
+        await Account.create([{
+            userId: newUser[0]._id,
+            balance: Math.ceil(Math.random()*10000)
+        }], {session})
+
+        const token = jwt.sign({ userId: newUser[0]._id }, JWT_SECRET)
+
+        await session.commitTransaction()
 
         res.status(200).json({
             message: "User created successfully",
@@ -31,8 +39,10 @@ router.post('/signup', signupValidMiddleware, signupAuthMiddleware, async (req, 
         })
 
     } catch (err) {
+        await session.abortTransaction()
         res.sendStatus(500)
     }
+    await session.endSession()
 })
 
 router.post('/signin', signinValidMiddleware, signinAuthMiddleware, (req, res) => {

@@ -1,7 +1,8 @@
 const { accountIdSchema, balanceSchema } = require("../schemas")
 
 function transferValidMiddleware(req, res, next){
-    const {to, amount} = req.body
+    req.body.amount = parseInt(req.body.amount)
+    let {to, amount} = req.body
     if ( accountIdSchema.safeParse(to).success && balanceSchema.safeParse(amount).success ){
         next()
     }else{
