@@ -22,7 +22,7 @@ export function Signin() {
     };
     try{
       const response = await axios.post(
-        "https://507ddff1-ad1c-4e87-960e-cc49d0f250ae-00-35vdytk1f75t7.pike.replit.dev/api/v1/user/signin",
+        "http://localhost:3000//api/v1/user/signin",
         signinPayload
       );
       // console.log(response)
