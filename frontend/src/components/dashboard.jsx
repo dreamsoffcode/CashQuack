@@ -73,7 +73,7 @@ function Friends({ token, userName }) {
   useEffect(() => {
     (async () => {
       const response = await axios.get(
-        "https://507ddff1-ad1c-4e87-960e-cc49d0f250ae-00-35vdytk1f75t7.pike.replit.dev/api/v1/user/bulk",
+        "https://cash-quack-backend.vercel.app/api/v1/user/bulk",
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -193,7 +193,7 @@ function SendMoneyMain({ token }) {
     };
     try {
       const response = await axios.post(
-        "https://507ddff1-ad1c-4e87-960e-cc49d0f250ae-00-35vdytk1f75t7.pike.replit.dev/api/v1/account/transfer",
+        "https://cash-quack-backend.vercel.app/api/v1/account/transfer",
         transferPayload,
         {
           headers: {
