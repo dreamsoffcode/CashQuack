@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-mongoose.connect("mongodb+srv://admin:h1P1XmkBIvH4mbSH@cluster0.sc24xe1.mongodb.net/wallet")
+mongoose.connect(process.env.MONGODB_URL)
 .then(()=>console.log("Connection to db secured"))
 .catch((err)=>console.log("Connection to db failed"))
 

@@ -36,7 +36,7 @@ function UpdateMain() {
   async function updateData() {
     try {
       const response = await axios.put(
-        "https://507ddff1-ad1c-4e87-960e-cc49d0f250ae-00-35vdytk1f75t7.pike.replit.dev/api/v1/user",
+        "https://cash-quack-backend.vercel.app/api/v1/user",
         payload,
         {
           headers: {

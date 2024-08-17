@@ -44,7 +44,7 @@ function Balance({ token }) {
     (async () => {
       // console.log("use effect triggered async")
       const response = await axios.get(
-        "https://507ddff1-ad1c-4e87-960e-cc49d0f250ae-00-35vdytk1f75t7.pike.replit.dev/api/v1/account/balance",
+        "https://cash-quack-backend.vercel.app/api/v1/account/balance",
         {
           headers: {
             Authorization: "Bearer " + token,

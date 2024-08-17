@@ -22,7 +22,7 @@ export function Signin() {
     };
     try{
       const response = await axios.post(
-        "http://localhost:3000//api/v1/user/signin",
+        "https://cash-quack-backend.vercel.app/api/v1/user/signin",
         signinPayload
       );
       // console.log(response)
