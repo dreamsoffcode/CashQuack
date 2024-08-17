@@ -250,7 +250,7 @@ function SendMoneyMain({ token }) {
     return (
       <div>
         <img
-          src="../success.png"
+          src="/static/images/success.png"
           alt="Transaction successful"
           className="w-60"
         ></img>
@@ -261,7 +261,7 @@ function SendMoneyMain({ token }) {
     return (
       <div>
         <img
-          src="../failed.jpg"
+          src="/static/images/failed.jpg"
           alt="Transaction failed"
           className="w-60"
         ></img>

@@ -10,7 +10,7 @@ export function Landing(){
     <div className="flex flex-col h-screen">
       {/* <Navbar /> */}
       <div className="grow flex items-center justify-center bg-black">
-        <img src="../../CashQuack.png" className="w-1/2 cursor-pointer border rounded-md p-5" onClick={()=>Navigate('/signup')}></img>
+        <img src="/static/images/CashQuack.png" className="w-1/2 cursor-pointer border rounded-md p-5" onClick={()=>Navigate('/signup')}></img>
       </div>
       
     </div>
