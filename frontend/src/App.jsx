@@ -1,11 +1,10 @@
+import './App.css'
+import {} from 'react'
 
-function App() {
-
+export default function App() {
+  // const navigate = useNavigate()
   return (
-    <div>
-        Hello world
-    </div>
+    // <button onClick={()=>navigate('/signup')}>Sign up</button>
+    <div>Hello world</div>
   )
 }
-
-export default App

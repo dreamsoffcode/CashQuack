@@ -15,6 +15,8 @@ async function signinAuthMiddleware(req, res, next) {
         })
     } else {
         req.userId = userFound._id
+        req.firstName = userFound.firstName
+        req.lastName = userFound.lastName
         next()
     }
 }

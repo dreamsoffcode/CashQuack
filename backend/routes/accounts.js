@@ -8,15 +8,16 @@ const mongoose = require('mongoose')
 
 router.get('/balance', authMiddleware, async (req, res)=>{
     const {userId} = req
-    
+    console.log("balance", userId)
     try{
         const accountFound = await Account.findOne({userId}).exec()
+    console.log(accountFound)
         if(accountFound){
             res.status(200).json({
                 balance: accountFound.balance
             })
         }else{
-            res.sendStatus(404)
+            res.sendStatus(400)
         }
     }catch(err){
         res.sendStatus(500)
@@ -32,7 +33,7 @@ router.post('/transfer', authMiddleware, transferValidMiddleware, balanceCheckMi
     const session = await mongoose.startSession()
     session.startTransaction()
     
-    // try{    
+    try{    
         const {balance} = await Account.find({userId: fromAccount}).session(session).exec()
 
         if(balance < amount){
@@ -61,10 +62,10 @@ router.post('/transfer', authMiddleware, transferValidMiddleware, balanceCheckMi
             message: "Transfer successful"
         })
         
-    // }catch(err){
-    //     await session.abortTransaction()
-    //     res.sendStatus(500)
-    // }
+    }catch(err){
+        await session.abortTransaction()
+        res.sendStatus(500)
+    }
     
     session.endSession()
 })
